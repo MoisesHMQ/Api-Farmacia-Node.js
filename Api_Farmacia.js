@@ -8,7 +8,7 @@ app.use(express.json());
 const medicamentos = []
 
 app.post('/medicamentos/cadastro', (request, response) => {
-    const validarRemedios = usuarios.find((validar) => validar.codigo == request.body.codigo)
+    const validarRemedios = medicamentos.find((validar) => validar.codigo == request.body.codigo)
         if (validarRemedios){
             return response.send("Erro: Remedio já cadastrado.")}
         
@@ -23,4 +23,11 @@ app.post('/medicamentos/cadastro', (request, response) => {
 app.get('/lista/medicamentos', (request, response) => {
     console.log(request.body);
     return response.json(medicamentos)
+})
+
+app.delete('/excluir', (request,response) => {
+    const id = medicamentos.indexOf('id');
+    const excluirMedicamentos = medicamentos.splice(id,1)
+        
+    return response.send(excluirMedicamentos)
 })
