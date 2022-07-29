@@ -75,15 +75,14 @@ app.post('/funcionarios/cadastro', (request, response) => {
 })
 
 app.post('/acesso/funcionarios', (request, response) => {
-    console.log(request.body);
-    if (request.body.funcionarios.nome == request.body.funcionarios && request.body.funcionarios.senha == request.body.funcionarios.senha){
+    const loginFuncionarios = funcionarios.find((funcionario) => funcionario.nome == request.body.nome && funcionario.senha == request.body.senha)
+    if(loginFuncionarios){
         return response.send("status: Seja bem vindo")
     }
-    else  {
+    else{
         return response.send("erro: Nome ou Senha incorretos")
     }
-})
-
+    })
 app.get('/listar/funcionarios', (request, response) => {
     console.log(request.body);
     return response.json(funcionarios)
