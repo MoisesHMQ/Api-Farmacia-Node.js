@@ -46,3 +46,8 @@ app.post('/clientes/cadastro', (request, response) => {
     })
     return response.send("Usuario criado com sucesso.")
 })
+
+app.get('/lista/clientes', (request, response) => {
+    console.log(request.body);
+    return response.json(clientes)
+})
