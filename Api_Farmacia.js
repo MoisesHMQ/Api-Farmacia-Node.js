@@ -84,6 +84,11 @@ app.post('/acesso/funcionarios', (request, response) => {
     }
 })
 
+app.get('/listar/funcionarios', (request, response) => {
+    console.log(request.body);
+    return response.json(funcionarios)
+})
+
 app.listen(5000, () => {
     console.log('Status: Farmacia Online.')
 })
