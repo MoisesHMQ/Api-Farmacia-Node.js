@@ -19,3 +19,8 @@ app.post('/medicamentos/cadastro', (request, response) => {
     })
     return response.send("Status: Medicamento criado com sucesso.")
 })
+
+app.get('/lista/medicamentos', (request, response) => {
+    console.log(request.body);
+    return response.json(medicamentos)
+})
