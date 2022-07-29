@@ -5,7 +5,7 @@ var uuid = require('uuid');
 
 app.use(express.json());
 
-const medicamentos = []
+const medicamentos = [];
 
 app.post('/medicamentos/cadastro', (request, response) => {
     const validarRemedios = medicamentos.find((validar) => validar.codigo == request.body.codigo)
@@ -30,4 +30,19 @@ app.delete('/excluir', (request,response) => {
     const excluirMedicamentos = medicamentos.splice(id,1)
         
     return response.send(excluirMedicamentos)
+})
+
+const clientes = [];
+
+app.post('/clientes/cadastro', (request, response) => {
+    const validarClientes = clientes.find((user) => user.cpf == request.body.cpf)
+        if (validarClientes){
+            return response.send("Status: Usuario Já Cadastrado.")}
+        
+        clientes.push({
+        id: uuid.v4(),
+        cpf: request.body.cpf,
+        senha: request.body.senha
+    })
+    return response.send("Usuario criado com sucesso.")
 })
