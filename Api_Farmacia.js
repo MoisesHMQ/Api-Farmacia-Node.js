@@ -51,3 +51,10 @@ app.get('/lista/clientes', (request, response) => {
     console.log(request.body);
     return response.json(clientes)
 })
+
+app.delete('/clientes/excluir', (request,response) => {
+    const id = clientes.indexOf('id');
+    const excluirClientes = clientes.splice(id,1)
+        
+    return response.send(excluirClientes)
+})
