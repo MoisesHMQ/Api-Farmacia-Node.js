@@ -37,14 +37,14 @@ const clientes = [];
 app.post('/clientes/cadastro', (request, response) => {
     const validarClientes = clientes.find((user) => user.cpf == request.body.cpf)
         if (validarClientes){
-            return response.send("Status: Usuario Já Cadastrado.")}
+            return response.send("Erro: Cliente Já Cadastrado.")}
         
         clientes.push({
         id: uuid.v4(),
         cpf: request.body.cpf,
         senha: request.body.senha
     })
-    return response.send("Usuario criado com sucesso.")
+    return response.send("Cliente Cadastrado com sucesso.")
 })
 
 app.get('/lista/clientes', (request, response) => {
@@ -57,4 +57,19 @@ app.delete('/clientes/excluir', (request,response) => {
     const excluirClientes = clientes.splice(id,1)
         
     return response.send(excluirClientes)
+})
+
+const funcionarios = [];
+
+app.post('/funcionarios/cadastro', (request, response) => {
+    const validarFuncionarios = funcionarios.find((funcionario) => funcionario.nome == request.body.nome)
+        if (validarFuncionarios){
+            return response.send("Erro: Funcionario Já Cadastrado.")}
+        
+        funcionarios.push({
+        id: uuid.v4(),
+        nome: request.body.nome,
+        senha: request.body.senha
+    })
+    return response.send("Funcionario cadastrado com sucesso.")
 })
