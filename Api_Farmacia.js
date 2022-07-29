@@ -83,6 +83,7 @@ app.post('/acesso/funcionarios', (request, response) => {
         return response.send("erro: Nome ou Senha incorretos")
     }
     })
+    
 app.get('/listar/funcionarios', (request, response) => {
     console.log(request.body);
     return response.json(funcionarios)
