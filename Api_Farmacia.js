@@ -73,3 +73,17 @@ app.post('/funcionarios/cadastro', (request, response) => {
     })
     return response.send("Funcionario cadastrado com sucesso.")
 })
+
+app.post('/acesso/funcionarios', (request, response) => {
+    console.log(request.body);
+    if (request.body.funcionarios.nome == request.body.funcionarios && request.body.funcionarios.senha == request.body.funcionarios.senha){
+        return response.send("status: Seja bem vindo")
+    }
+    else  {
+        return response.send("erro: Nome ou Senha incorretos")
+    }
+})
+
+app.listen(5000, () => {
+    console.log('Status: Farmacia Online.')
+})
