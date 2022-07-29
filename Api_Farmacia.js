@@ -88,6 +88,13 @@ app.get('/listar/funcionarios', (request, response) => {
     return response.json(funcionarios)
 })
 
+app.delete('/funcionarios/excluir', (request,response) => {
+    const id = funcionarios.indexOf('id');
+    const excluirFuncionarios = funcionarios.splice(id,1)
+        
+    return response.send(excluirFuncionarios)
+})
+
 app.listen(5000, () => {
     console.log('Status: Farmacia Online.')
 })
